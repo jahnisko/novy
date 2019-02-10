@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <title>Příkazy pro ovládání Gitu</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>
+      <header class="jumbotron bg-danger">
+          <h1 class="text-center text-white display-4">Příkazy pro ovládání Gitu</h1>
+      </header>
+      <main class="container">
+          <h2 class="jumbotron bg-muted text-center">Základní konfigurace</h2>
+          <p>Pokud chceme klonovat nějaký repozitář z GitHubu, tak použijeme příkaz</p>
+          <p><code><b>git</b> clone https://github.io/nazevrepozitare/neco.git</code></p>
+          <p>Na některých pracovištích (školách, firmách, institucích, ...) "běží", tzv. proxy server, který zajišťuje a 
+                stará se o komunikaci mezi firemním, školním intranetem a globálním internetem. Právě proto bychom měli
+              provést operaci, která zajistí komunikaci mezi proxy a internetem "otevřeně". Před vytvořením repozitáře provedeme tyto 2 příkazy: </p>
+        <p><code><b>git</b> config --global http.proxy http://adresaproxy:800</code></p>
+        <p><code><b>git</b> config --global http.sslverify "false"</code></p>
+          <p>Pro vytvoření lokálního repozitáře je potřeba využít příkaz:</p>
+          <p><code><b>git</b> init</code></p>
+          <p>Když potřebujeme zjistit stav našeho repozitáře, měli bychom použít příkaz:</p>
+          <p><code><b>git</b> status</code></p>
+          <p>Nesmíme také zapomenout na nastavení uživatelského účtu pro použití v lokálním repozitáři - to se hodí právě pro ty sítě oddělené proxy:</p>
+          <p><code><b>git</b> --local user.name "nick"</code></p>
+          <p>A pro nastavení e-mailové adresy:</p>
+          <p><code><b>git</b> config --local user.email "vasemail@domena.cz"</code></p>
+          <p>Pokud se bavíme o nastavení v celém počítači (ve vaší domácnosti, u prarodičů, ...), tak použijeme tyto příkazy, které jsou velice obdobné, až na dvě slůvka:</p>
+          <p><code><b>git</b> config --global user.name "nick" </code></p>
+          <p><code><b>git</b> config --global user.email "vasemail@domena.cz</code></p>
+          <p>Pro zobrazení konfiguračních souborů "na obrazovku" využijeme příkaz:</p>
+          <p><code><b>git</b> --list</code></p>
+          <h2 class="jumbotron bg-muted text-center">Jak se pracuje s lokálním repozitářem?</h2>
+          <p>Budeme určitě muset přesunout <u>všechny</u> soubory z našeho lokálního repozitáře do části zvané <b>staging area</b>:</p>
+          <p><code><b>git</b> add -all</code> nebo <code><b>git</b> add .</code></p>
+          <p>Můžeme samozřejmě do staging area přesouvat soubory samostatně, uveďme si příklad vložení souboru <samp>README.md</samp>:</p>
+          <p><code><b>git</b> add README.md</code></p>
+          <p>Nebo můžeme přesunout všechny textové soubory s libovolným počtem znaků:</p>
+          <p><code><b>git</b> add *.txt</code></p>
+          <p>Pokud chceme naopak uvolnit ze <b>staging area</b> všechny textové soubory s libovolným počtem znaků, použijeme:</p>
+          <p><code><b>git</b> reset *.txt</code></p>
+          <p>A v případě, že chceme uvolnit ze <b>staging area</b> úplně <u>všechny</u> soubory, tak stačí použít pouze příkaz:</p>
+        <p><code><b>git</b> reset</code></p>
+        <h2 class="jumbotron bg-muted text-center">Spojení lokálního a vzdáleného repozitáře</h2>
+        <p>Pakliže se potřebujeme připojit ke vzdálenému repozitáři ke spojení, je potřeba využít příkaz vyznačený níže, kde <samp>origin</samp> je obvyklé pojmenování: </p>
+        <p><code><b>git</b> remote add origin https://github.io/nazevrepozitare/neco.git</code></p>
+    <p>Ještě bychom mohli zmínit, jak zapíšeme změny do repozitáře s komentářem:</p>
+    <p><code><b>git</b> commit "prvni"</code></p>
+    <p>Když potřebujeme aktualizovat stav našeho vzdáleného repozitáře (viz. origin), tak jistě využijeme příkaz:</p>
+    <p><code><b>git</b> push -u origin master</code></p>
+    <p>Jako podobný se nám může jevit další příkaz, která jen opravuje (fixuje) chyby při aktualizaci</p>
+    <p><code><b>git</b> push -f origin master</code></p>
+    <p>Když chceme aktualizovat stav našeho lokálního repozitáře podle toho vzdáleného, použijeme tento příkaz:</p>
+    <p><code><b>git</b> pull origin master</code></p>
+    <p>Když chceme vypsat na obrazovku výpis všech aktuálních commitů:</p>
+    <p><code><b>git</b> log</code></p>
+</main>
+      <footer>
+          <hr>
+          <p class="text-center">&copy; Vítězslav Jahn, IT1 SŠPU OPAVA</p>
+      </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
